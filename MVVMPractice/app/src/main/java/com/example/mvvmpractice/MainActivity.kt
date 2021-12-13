@@ -1,5 +1,6 @@
 package com.example.mvvmpractice
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mvvmpractice.databinding.ActivityMainBinding
@@ -16,10 +17,13 @@ class MainActivity : AppCompatActivity() {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mBinding!!.text.text = "token"
-
         mBinding!!.button.setOnClickListener {
             mBinding!!.text.text = "ㅅㅂ"
+        }
+        mBinding!!.refresh.setOnRefreshListener {
+            startActivity(Intent(applicationContext,MainActivity::class.java))
+            finish()
+            mBinding!!.refresh.isRefreshing = false
         }
     }
 

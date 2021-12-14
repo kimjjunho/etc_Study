@@ -3,6 +3,10 @@ package com.example.mvvmpractice
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.databinding.DataBindingUtil
+import com.example.mvvmpractice.bind.DataBindingActivity
+import com.example.mvvmpractice.databinding.ActivityDataBindingBinding
+import com.example.mvvmpractice.live.LiveDataActivity
 import com.example.mvvmpractice.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,18 +21,11 @@ class MainActivity : AppCompatActivity() {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mBinding!!.button.setOnClickListener {
-            mBinding!!.text.text = "ㅅㅂ"
+        mBinding!!.bindBtn.setOnClickListener {
+            startActivity(Intent(this, DataBindingActivity::class.java))
         }
-        mBinding!!.refresh.setOnRefreshListener {
-            startActivity(Intent(applicationContext,MainActivity::class.java))
-            finish()
-            mBinding!!.refresh.isRefreshing = false
+        mBinding!!.liveBtn.setOnClickListener {
+            startActivity(Intent(this, LiveDataActivity::class.java))
         }
-    }
-
-    override fun onDestroy() {
-        mBinding = null
-        super.onDestroy()
     }
 }

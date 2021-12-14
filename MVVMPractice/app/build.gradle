@@ -27,10 +27,13 @@ android {
             viewBinding{
                 enabled = true
             }
+            dataBinding{
+                enabled = true
+            }
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
@@ -41,6 +44,9 @@ android {
 dependencies {
     //새로 고침
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    //by viewModel()사용
+    implementation 'androidx.activity:activity-ktx:1.2.0'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.7.0'
